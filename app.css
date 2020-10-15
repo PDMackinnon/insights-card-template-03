@@ -7,12 +7,6 @@
 --sizeFactor: calc(var(--cardWsize) / var(--aspectW));
 --cardHsize: calc(var(--aspectH) * var(--sizeFactor));
 
-/* --size1:calc(40vw / var(--aspectW));
---cardWsize:calc(var(--aspectW) * var(--size1));
---cardHsize:calc(var(--aspectH) * var(--size1)); */
-
-
-
 }
 
 * {
@@ -64,6 +58,10 @@ transition: 0.5s;
 
 }
 
+.cardFront.landscape {
+    background-size: cover;
+}
+
 .cardFront.portrait, .cardBack.portrait {
     /* width:300px;
     height:400px; */
@@ -106,21 +104,11 @@ z-index: 20;
     top: 50px; */
     transform: rotateY(180deg);
     background-color: white;
-z-index: -20;
+    z-index: -20;
 
-/* left:70px; */
-}
-
-/* 
-.cardFront:hover {
-    transform: rotate(90deg);
 }
 
 
-.cardFront:active + .cardBack  {
-
-    transform: rotateY(180deg);
-} */
 
 
 
