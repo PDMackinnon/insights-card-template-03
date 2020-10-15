@@ -1,0 +1,158 @@
+:root {
+
+--aspectW: 4;
+--aspectH: 3;
+
+--cardWsize: 50vw;
+--sizeFactor: calc(var(--cardWsize) / var(--aspectW));
+--cardHsize: calc(var(--aspectH) * var(--sizeFactor));
+
+/* --size1:calc(40vw / var(--aspectW));
+--cardWsize:calc(var(--aspectW) * var(--size1));
+--cardHsize:calc(var(--aspectH) * var(--size1)); */
+
+
+
+}
+
+* {
+    box-sizing: border-box;  
+}
+
+.cardBoard {
+width: 90vw;
+height: 90vh;
+border: 2px dashed burlywood;
+position: relative;
+left:2em;
+top: 2em;
+
+box-shadow: darkgrey 1em 1em;
+
+transform-style: preserve-3d; 
+
+transform-origin: center;
+transition: 0.5s;
+}
+
+.card {
+
+    /* width: 70vw;
+    height: 70vh; */
+
+    width: var(--cardWsize);
+    height: var(--cardWsize);
+
+
+    /* border: 6px solid burlywood; */
+    position: relative;
+    left:2em;
+    top: 2em;
+
+
+    transform-style: preserve-3d; 
+    transform-origin: center;
+    transition: 0.5s;
+}
+
+.cardFront.landscape, .cardBack.landscape {
+    /* width:400px;
+    height:300px; */
+
+    width: var(--cardWsize);
+    height: var(--cardHsize);
+
+}
+
+.cardFront.portrait, .cardBack.portrait {
+    /* width:300px;
+    height:400px; */
+    width: var(--cardHsize);
+    height: var(--cardWsize);
+
+}
+
+.cardFront, .cardBack {
+
+display: inline-block;
+background-color: cornsilk;
+border:darkgray 3px solid;
+border-radius: 1em;
+padding: 01em;
+box-shadow: darkgrey 1em 1em;
+
+position: absolute;
+/* left:40px;
+top:50px; */
+
+transform-origin: center;
+transform-style: preserve-3d; 
+
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;  
+
+
+transition: 0.5s;
+}
+
+
+.cardFront {
+z-index: 20;
+}
+
+.cardBack {
+    position: absolute;
+    /* right:40px;
+    top: 50px; */
+    transform: rotateY(180deg);
+    background-color: white;
+z-index: -20;
+
+/* left:70px; */
+}
+
+/* 
+.cardFront:hover {
+    transform: rotate(90deg);
+}
+
+
+.cardFront:active + .cardBack  {
+
+    transform: rotateY(180deg);
+} */
+
+
+
+#toggle {
+    display: none;
+}
+
+#toggle:checked ~ .card {
+    transform: rotateY(180deg);
+
+}
+#flipButton {
+    background-color: darkseagreen;
+    padding: 2em;
+    position: absolute;
+    /* bottom: 1em;
+    left: 3em; */
+    top:2em;
+    right: 2em;;
+
+    user-select: none;
+    border-radius: 0.4em;
+}
+#toggle:checked ~ #flipButton {
+    background-color: darkslategray;
+    color: white;
+}
+#flipButton:active {
+    background-color: orange !important;
+}
+
+.rotateR {
+    transform: rotate(90deg);
+}
+
