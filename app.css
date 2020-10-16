@@ -3,15 +3,9 @@
 --aspectW: 4;
 --aspectH: 3;
 
---cardWsize: 50vw;
+--cardWsize: 40vw;
 --sizeFactor: calc(var(--cardWsize) / var(--aspectW));
 --cardHsize: calc(var(--aspectH) * var(--sizeFactor));
-
-/* --size1:calc(40vw / var(--aspectW));
---cardWsize:calc(var(--aspectW) * var(--size1));
---cardHsize:calc(var(--aspectH) * var(--size1)); */
-
-
 
 }
 
@@ -64,6 +58,10 @@ transition: 0.5s;
 
 }
 
+.cardFront {
+    background-size: cover;
+}
+
 .cardFront.portrait, .cardBack.portrait {
     /* width:300px;
     height:400px; */
@@ -106,21 +104,11 @@ z-index: 20;
     top: 50px; */
     transform: rotateY(180deg);
     background-color: white;
-z-index: -20;
+    z-index: -20;
 
-/* left:70px; */
-}
-
-/* 
-.cardFront:hover {
-    transform: rotate(90deg);
 }
 
 
-.cardFront:active + .cardBack  {
-
-    transform: rotateY(180deg);
-} */
 
 
 
@@ -132,14 +120,55 @@ z-index: -20;
     transform: rotateY(180deg);
 
 }
+
+/* experiment below with a spread card toggle
+
+    cannot find how to target the element if
+     a child of sibling of the checked psuedo element ????
+
+     so trying anyway with hidden checkbox to get the spread style
+
+*/
+
+#toggle2, #bothSides {
+    display: none;
+}
+
+
+
+#toggle2:checked ~ .cardFront, #toggle2:checked ~ .cardBack {
+
+    box-shadow: none;
+    border-radius: 0;
+        border: darkslateblue 1px solid;
+
+
+}
+
+#toggle2:checked ~ .cardFront {
+    border-right: none;
+
+}
+
+#toggle2:checked ~ .cardBack {
+
+    transform: rotateY(0deg);
+    transform: translateX(var(--cardWsize));
+
+}
+
+
+
+
 #flipButton {
     background-color: darkseagreen;
     padding: 2em;
     position: absolute;
     /* bottom: 1em;
     left: 3em; */
-    top:2em;
+    /* top:2em; */
     right: 2em;;
+    bottom: 2em;;
 
     user-select: none;
     border-radius: 0.4em;
