@@ -22,6 +22,11 @@
     margin: 0;
 }
 
+p, h1, h2, h3 {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
 .cardBoard {
 width: 100vw;
 height: 100vh;
@@ -59,7 +64,7 @@ transition: 0.5s;
     position: absolute;
     left:50%;
     top:50%;
-    translate: -50% -50%;
+    transform: translate(-50%, -50%);
 
     transform-style: preserve-3d; 
     transform-origin: center;
@@ -164,23 +169,14 @@ article.cardBack p {
 }
 
 .card.offLeft{
-    /* transform-origin: top left;
-    transform: rotateY(90deg); */
-    /* translate: calc(-0.8 * var(--cardWsize)) 0; */
 
-    transform: scale(0.5) rotateY(90deg);
+    transform:translate(-150%, -50%) scale(0.5) rotateY(90deg) ;
 
-        translate: -150% -50%;
 }
 
 .card.offRight{
-    /* transform-origin: top right;
-    transform: rotateY(90deg); */
 
-
-    transform: scale(0.5) rotateY(90deg);
-
-    translate: 50% -50%;
+    transform: translate(50%, -50%) scale(0.5) rotateY(90deg) ;
 
 }
 
