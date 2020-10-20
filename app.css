@@ -1,27 +1,38 @@
 :root {
 
---aspectW: 4;
---aspectH: 3;
+--aspectW: 2209;
+--aspectH: 1242;
 
---cardWsize: 40vw;
+/* --cardWsize: 40vw;
 --sizeFactor: calc(var(--cardWsize) / var(--aspectW));
---cardHsize: calc(var(--aspectH) * var(--sizeFactor));
+--cardHsize: calc(var(--aspectH) * var(--sizeFactor)); */
+
+
+--cardHsize: 48vh;
+--sizeFactor: calc(var(--cardHsize) / var(--aspectH));
+--cardWsize: calc(var(--aspectW) * var(--sizeFactor));
+
+
 
 }
 
 * {
     box-sizing: border-box;  
+    padding: 0;
+    margin: 0;
 }
 
 .cardBoard {
-width: 90vw;
-height: 90vh;
-border: 2px dashed burlywood;
-position: relative;
-left:2em;
-top: 2em;
+width: 100vw;
+height: 100vh;
+/* border: 2px dashed burlywood; */
+/* position: relative; */
 
-box-shadow: darkgrey 1em 1em;
+position: fixed;
+/* left:1em;
+top: 1em; */
+
+/* box-shadow: darkgrey 1em 1em; */
 
 transform-style: preserve-3d; 
 
@@ -31,57 +42,55 @@ transition: 0.5s;
 
 .card {
 
-    /* width: 70vw;
-    height: 70vh; */
-
     width: var(--cardWsize);
-    height: var(--cardWsize);
+    /* height: var(--cardHsize); */
 
+    /* should be height = cardH * 2 */
+    
+    /* margin: 0 auto; */
 
-    /* border: 6px solid burlywood; */
-    position: relative;
+    /* position: relative;
     left:2em;
-    top: 2em;
+    top: 2em; */
 
+    /* position: absolute; */
+    /* display: inline-block; */
+
+    position: absolute;
+    left:50%;
+    top:50%;
+    translate: -50% -50%;
 
     transform-style: preserve-3d; 
     transform-origin: center;
-    transition: 0.5s;
+    transition: 2.5s;
 }
 
 .cardFront.landscape, .cardBack.landscape {
-    /* width:400px;
-    height:300px; */
 
     width: var(--cardWsize);
     height: var(--cardHsize);
+    margin: 0 auto;
+
 
 }
 
 .cardFront {
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-.cardFront.portrait, .cardBack.portrait {
-    /* width:300px;
-    height:400px; */
+/* .cardFront.portrait, .cardBack.portrait {
     width: var(--cardHsize);
     height: var(--cardWsize);
-
-}
+} */
 
 .cardFront, .cardBack {
 
-display: inline-block;
-background-color: cornsilk;
-border:darkgray 3px solid;
-border-radius: 1em;
-padding: 01em;
-box-shadow: darkgrey 1em 1em;
+/* display: inline-block;
 
-position: absolute;
-/* left:40px;
-top:50px; */
+position: absolute; */
+
 
 transform-origin: center;
 transform-style: preserve-3d; 
@@ -96,92 +105,116 @@ transition: 0.5s;
 
 .cardFront {
 z-index: 20;
+background-color: black;
 }
 
 .cardBack {
-    position: absolute;
-    /* right:40px;
-    top: 50px; */
-    transform: rotateY(180deg);
     background-color: white;
     z-index: -20;
-
 }
 
 
 
 
-
-#toggle {
-    display: none;
-}
-
-#toggle:checked ~ .card {
-    transform: rotateY(180deg);
-
-}
-
-/* experiment below with a spread card toggle
-
-    cannot find how to target the element if
-     a child of sibling of the checked psuedo element ????
-
-     so trying anyway with hidden checkbox to get the spread style
-
-*/
-
-#toggle2, #bothSides {
-    display: none;
-}
-
-
-
-#toggle2:checked ~ .cardFront, #toggle2:checked ~ .cardBack {
+.cardFront, .cardBack {
 
     box-shadow: none;
     border-radius: 0;
-        border: darkslateblue 1px solid;
-
-
-}
-
-#toggle2:checked ~ .cardFront {
-    border-right: none;
+    border: darkslateblue 1px solid;
+    /* border: fuchsia 6px dotted; */
 
 }
 
-#toggle2:checked ~ .cardBack {
+.cardFront {
+    /* border-right: none;
+     */
 
-    transform: rotateY(0deg);
-    transform: translateX(var(--cardWsize));
+        border-bottom: none;
+
 
 }
 
 
 
-
-#flipButton {
-    background-color: darkseagreen;
-    padding: 2em;
-    position: absolute;
-    /* bottom: 1em;
-    left: 3em; */
-    /* top:2em; */
-    right: 2em;;
-    bottom: 2em;;
-
-    user-select: none;
-    border-radius: 0.4em;
-}
-#toggle:checked ~ #flipButton {
-    background-color: darkslategray;
-    color: white;
-}
-#flipButton:active {
-    background-color: orange !important;
-}
 
 .rotateR {
     transform: rotate(90deg);
 }
 
+article.cardBack {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: scroll;
+    padding: 0.2rem 0 0 1rem;
+}
+
+article.cardBack h1 {
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+article.cardBack h3 {
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+
+article.cardBack p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    padding-bottom: 1.2rem;
+}
+
+.card.offLeft{
+    /* transform-origin: top left;
+    transform: rotateY(90deg); */
+    /* translate: calc(-0.8 * var(--cardWsize)) 0; */
+
+    transform: scale(0.5) rotateY(90deg);
+
+        translate: -150% -50%;
+}
+
+.card.offRight{
+    /* transform-origin: top right;
+    transform: rotateY(90deg); */
+
+
+    transform: scale(0.5) rotateY(90deg);
+
+    translate: 50% -50%;
+
+}
+
+form, input {
+    display: none;
+}
+
+.buttonLeft, .buttonRight {
+    position: absolute;
+
+    height:100vh;
+    width:4rem; 
+
+    z-index: 1000;
+
+
+    line-height: 100vh;
+    padding: 2rem;
+    margin: 2rem;
+    font-size: 3rem;
+
+
+
+}
+.buttonRight {
+right: 0;
+
+}
+
+
+#page1:checked ~ .buttonLeft {
+    display: none;
+}
+
+#page4:checked ~ .buttonRight {
+    display: none;
+}
