@@ -1,7 +1,7 @@
 :root {
 
---aspectW: 4;
---aspectH: 3;
+--aspectW: 2209;
+--aspectH: 1242;
 
 --cardWsize: 40vw;
 --sizeFactor: calc(var(--cardWsize) / var(--aspectW));
@@ -11,6 +11,8 @@
 
 * {
     box-sizing: border-box;  
+    padding: 0;
+    margin: 0;
 }
 
 .cardBoard {
@@ -59,7 +61,8 @@ transition: 0.5s;
 }
 
 .cardFront {
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .cardFront.portrait, .cardBack.portrait {
@@ -73,10 +76,9 @@ transition: 0.5s;
 .cardFront, .cardBack {
 
 display: inline-block;
-background-color: cornsilk;
+/* background-color: cornsilk; */
 border:darkgray 3px solid;
 border-radius: 1em;
-padding: 01em;
 box-shadow: darkgrey 1em 1em;
 
 position: absolute;
@@ -96,6 +98,7 @@ transition: 0.5s;
 
 .cardFront {
 z-index: 20;
+background-color: black;
 }
 
 .cardBack {
@@ -185,3 +188,24 @@ z-index: 20;
     transform: rotate(90deg);
 }
 
+article.cardBack {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-y: scroll;
+    padding: 0.2rem 0 0 1rem;
+}
+
+article.cardBack h1 {
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+article.cardBack h3 {
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+
+article.cardBack p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    padding-bottom: 1.2rem;
+}
