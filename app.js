@@ -98,13 +98,13 @@ function pageChange(from,to,directionForwards){
 
 }
 
-let f = d.querySelector("form");
-f.addEventListener("change", function(e){
-// e.preventDefault();
+// let f = d.querySelector("form");
+// f.addEventListener("change", function(e){
+// // e.preventDefault();
 
-console.log(e);
+// console.log(e);
 
-});
+// });
 
 
 d.addEventListener("click", (e) => {

@@ -184,7 +184,7 @@ article.cardBack p {
 
 }
 
-form {
+form, input {
     display: none;
 }
 
@@ -208,4 +208,13 @@ form {
 .buttonRight {
 right: 0;
 
+}
+
+
+#page1:checked ~ .buttonLeft {
+    display: none;
+}
+
+#page4:checked ~ .buttonRight {
+    display: none;
 }
