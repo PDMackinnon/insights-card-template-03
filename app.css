@@ -156,7 +156,9 @@ background-color: black;
 #toggle2:checked ~ .cardBack {
 
     transform: rotateY(0deg);
-    transform: translateX(var(--cardWsize));
+    /* transform: translateX(var(--cardWsize)); */
+    transform: translateY(var(--cardHsize));
+
 
 }
 
