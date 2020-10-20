@@ -3,9 +3,16 @@
 --aspectW: 2209;
 --aspectH: 1242;
 
---cardWsize: 40vw;
+/* --cardWsize: 40vw;
 --sizeFactor: calc(var(--cardWsize) / var(--aspectW));
---cardHsize: calc(var(--aspectH) * var(--sizeFactor));
+--cardHsize: calc(var(--aspectH) * var(--sizeFactor)); */
+
+
+--cardHsize: 40vh;
+--sizeFactor: calc(var(--cardHsize) / var(--aspectH));
+--cardWsize: calc(var(--aspectW) * var(--sizeFactor));
+
+
 
 }
 
@@ -16,14 +23,14 @@
 }
 
 .cardBoard {
-width: 90vw;
-height: 90vh;
-border: 2px dashed burlywood;
+width: 100vw;
+height: 100vh;
+/* border: 2px dashed burlywood; */
 position: relative;
-left:2em;
-top: 2em;
+/* left:1em;
+top: 1em; */
 
-box-shadow: darkgrey 1em 1em;
+/* box-shadow: darkgrey 1em 1em; */
 
 transform-style: preserve-3d; 
 
@@ -33,14 +40,11 @@ transition: 0.5s;
 
 .card {
 
-    /* width: 70vw;
-    height: 70vh; */
-
     width: var(--cardWsize);
-    height: var(--cardWsize);
+    height: var(--cardHsize);
+    
+    margin: 0 auto;
 
-
-    /* border: 6px solid burlywood; */
     position: relative;
     left:2em;
     top: 2em;
@@ -48,12 +52,10 @@ transition: 0.5s;
 
     transform-style: preserve-3d; 
     transform-origin: center;
-    transition: 0.5s;
+    transition: 2.5s;
 }
 
 .cardFront.landscape, .cardBack.landscape {
-    /* width:400px;
-    height:300px; */
 
     width: var(--cardWsize);
     height: var(--cardHsize);
@@ -65,25 +67,17 @@ transition: 0.5s;
     background-repeat: no-repeat;
 }
 
-.cardFront.portrait, .cardBack.portrait {
-    /* width:300px;
-    height:400px; */
+/* .cardFront.portrait, .cardBack.portrait {
     width: var(--cardHsize);
     height: var(--cardWsize);
-
-}
+} */
 
 .cardFront, .cardBack {
 
-display: inline-block;
-/* background-color: cornsilk; */
-border:darkgray 3px solid;
-border-radius: 1em;
-box-shadow: darkgrey 1em 1em;
+/* display: inline-block;
 
-position: absolute;
-/* left:40px;
-top:50px; */
+position: absolute; */
+
 
 transform-origin: center;
 transform-style: preserve-3d; 
@@ -102,89 +96,38 @@ background-color: black;
 }
 
 .cardBack {
-    position: absolute;
-    /* right:40px;
-    top: 50px; */
-    transform: rotateY(180deg);
     background-color: white;
     z-index: -20;
-
 }
 
 
 
 
-
-#toggle {
-    display: none;
-}
-
-#toggle:checked ~ .card {
-    transform: rotateY(180deg);
-
-}
-
-/* experiment below with a spread card toggle
-
-    cannot find how to target the element if
-     a child of sibling of the checked psuedo element ????
-
-     so trying anyway with hidden checkbox to get the spread style
-
-*/
-
-#toggle2, #bothSides {
-    display: none;
-}
-
-
-
-#toggle2:checked ~ .cardFront, #toggle2:checked ~ .cardBack {
+.cardFront, .cardBack {
 
     box-shadow: none;
     border-radius: 0;
-        border: darkslateblue 1px solid;
+    border: darkslateblue 1px solid;
+    /* border: fuchsia 6px dotted; */
+
+}
+
+.cardFront {
+    /* border-right: none;
+     */
+
+        border-bottom: none;
 
 
 }
 
-#toggle2:checked ~ .cardFront {
-    border-right: none;
-
-}
-
-#toggle2:checked ~ .cardBack {
-
+.cardBack {
     transform: rotateY(0deg);
     /* transform: translateX(var(--cardWsize)); */
-    transform: translateY(var(--cardHsize));
 
-
+    /* transform: translateY(var(--cardHsize)); */
 }
 
-
-
-
-#flipButton {
-    background-color: darkseagreen;
-    padding: 2em;
-    position: absolute;
-    /* bottom: 1em;
-    left: 3em; */
-    /* top:2em; */
-    right: 2em;;
-    bottom: 2em;;
-
-    user-select: none;
-    border-radius: 0.4em;
-}
-#toggle:checked ~ #flipButton {
-    background-color: darkslategray;
-    color: white;
-}
-#flipButton:active {
-    background-color: orange !important;
-}
 
 .rotateR {
     transform: rotate(90deg);
@@ -210,4 +153,16 @@ article.cardBack p {
     font-size: 1rem;
     line-height: 1.4rem;
     padding-bottom: 1.2rem;
+}
+
+.card.offLeft{
+    transform-origin: top left;
+    transform: rotateY(90deg);
+    /* translate: calc(-0.8 * var(--cardWsize)); */
+}
+
+.card.offRight{
+    transform-origin: top right;
+    transform: rotateY(90deg);
+    /* translate: calc(0.8 * var(--cardWsize)); */
 }
