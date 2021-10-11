@@ -1,88 +1,85 @@
 :root {
+  --aspectW: 2209;
+  --aspectH: 1242;
 
---aspectW: 2209;
---aspectH: 1242;
-
-/* --cardWsize: 40vw;
+  /* --cardWsize: 40vw;
 --sizeFactor: calc(var(--cardWsize) / var(--aspectW));
 --cardHsize: calc(var(--aspectH) * var(--sizeFactor)); */
 
-
---cardHsize: 48vh;
---sizeFactor: calc(var(--cardHsize) / var(--aspectH));
---cardWsize: calc(var(--aspectW) * var(--sizeFactor));
-
-
-
+  --cardHsize: 48vh;
+  --sizeFactor: calc(var(--cardHsize) / var(--aspectH));
+  --cardWsize: calc(var(--aspectW) * var(--sizeFactor));
 }
 
 * {
-    box-sizing: border-box;  
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-p, h1, h2, h3 {
-    user-select: none;
-    -webkit-user-select: none;
+p,
+h1,
+h2,
+h3 {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .cardBoard {
-width: 100vw;
-height: 100vh;
-/* border: 2px dashed burlywood; */
-/* position: relative; */
+  width: 100vw;
+  height: 100vh;
+  /* border: 2px dashed burlywood; */
+  /* position: relative; */
 
-position: fixed;
-/* left:1em;
+  position: fixed;
+  left: 0;
+  top: 0;
+  /* left:1em;
 top: 1em; */
 
-/* box-shadow: darkgrey 1em 1em; */
+  /* box-shadow: darkgrey 1em 1em; */
 
-transform-style: preserve-3d; 
+  transform-style: preserve-3d;
 
-transform-origin: center;
-transition: 0.5s;
+  transform-origin: center;
+  transition: 0.5s;
 }
 
 .card {
+  width: var(--cardWsize);
+  /* height: var(--cardHsize); */
 
-    width: var(--cardWsize);
-    /* height: var(--cardHsize); */
+  /* should be height = cardH * 2 */
 
-    /* should be height = cardH * 2 */
-    
-    /* margin: 0 auto; */
+  /* margin: 0 auto; */
 
-    /* position: relative;
+  /* position: relative;
     left:2em;
     top: 2em; */
 
-    /* position: absolute; */
-    /* display: inline-block; */
+  /* position: absolute; */
+  /* display: inline-block; */
 
-    position: absolute;
-    left:50%;
-    top:50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 
-    transform-style: preserve-3d; 
-    transform-origin: center;
-    transition: 2.5s;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  transition: 2.5s;
 }
 
-.cardFront.landscape, .cardBack.landscape {
-
-    width: var(--cardWsize);
-    height: var(--cardHsize);
-    margin: 0 auto;
-
-
+.cardFront.landscape,
+.cardBack.landscape {
+  width: var(--cardWsize);
+  height: var(--cardHsize);
+  margin: 0 auto;
 }
 
 .cardFront {
-    background-size: contain;
-    background-repeat: no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* .cardFront.portrait, .cardBack.portrait {
@@ -90,127 +87,114 @@ transition: 0.5s;
     height: var(--cardWsize);
 } */
 
-.cardFront, .cardBack {
-
-/* display: inline-block;
+.cardFront,
+.cardBack {
+  /* display: inline-block;
 
 position: absolute; */
 
+  transform-origin: center;
+  transform-style: preserve-3d;
 
-transform-origin: center;
-transform-style: preserve-3d; 
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 
-backface-visibility: hidden;
--webkit-backface-visibility: hidden;  
-
-
-transition: 0.5s;
+  transition: 0.5s;
 }
 
-
 .cardFront {
-z-index: 20;
-background-color: black;
+  z-index: 20;
+  background-color: black;
 }
 
 .cardBack {
-    background-color: white;
-    z-index: -20;
+  background-color: white;
+  z-index: -20;
 }
 
-
-
-
-.cardFront, .cardBack {
-
-    box-shadow: none;
-    border-radius: 0;
-    border: darkslateblue 1px solid;
-    /* border: fuchsia 6px dotted; */
-
+.cardFront,
+.cardBack {
+  box-shadow: none;
+  border-radius: 0;
+  border: darkslateblue 1px solid;
+  /* border: fuchsia 6px dotted; */
 }
 
 .cardFront {
-    /* border-right: none;
+  /* border-right: none;
      */
 
-        border-bottom: none;
-
-
+  border-bottom: none;
 }
 
-
-
-
 .rotateR {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 article.cardBack {
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-y: scroll;
-    padding: 0.2rem 0 0 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-y: scroll;
+  padding: 0.2rem 0 0 1rem;
 }
 
 article.cardBack h1 {
-    font-size: 2rem;
-    line-height: 3rem;
+  font-size: 2rem;
+  line-height: 3rem;
 }
 
 article.cardBack h3 {
-    font-size: 1.2rem;
-    line-height: 2rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
 }
 
 article.cardBack p {
-    font-size: 1rem;
-    line-height: 1.4rem;
-    padding-bottom: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  padding-bottom: 1.2rem;
 }
 
-.card.offLeft{
-
-    transform:translate(-150%, -50%) scale(0.5) rotateY(90deg) ;
-
+.card.offLeft {
+  transform: translate(-150%, -50%) scale(0.5) rotateY(90deg);
 }
 
-.card.offRight{
-
-    transform: translate(50%, -50%) scale(0.5) rotateY(90deg) ;
-
+.card.offRight {
+  transform: translate(50%, -50%) scale(0.5) rotateY(90deg);
 }
 
-form, input {
-    display: none;
+form,
+input {
+  display: none;
 }
 
-.buttonLeft, .buttonRight {
-    position: absolute;
+.buttonLeft,
+.buttonRight {
+  position: absolute;
 
-    height:100vh;
-    width:4rem; 
+  height: 100vh;
+  width: 4rem;
 
-    z-index: 1000;
+  z-index: 1000;
 
-
-    line-height: 100vh;
-    padding: 2rem;
-    margin: 2rem;
-    font-size: 3rem;
-
-
-
+  line-height: 100vh;
+  padding: 2rem;
+  margin: 2rem;
+  font-size: 3rem;
 }
 .buttonRight {
-right: 0;
-
+  right: 0;
 }
 
-
 #page1:checked ~ .buttonLeft {
-    display: none;
+  display: none;
 }
 
 #page4:checked ~ .buttonRight {
-    display: none;
+  display: none;
+}
+
+#birdsongAudio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
 }
