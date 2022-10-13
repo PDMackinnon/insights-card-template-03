@@ -84,6 +84,12 @@ d.addEventListener("keydown", (e) => {
 }); //end key events listeners
 
 function pageChange(from, to, directionForwards) {
+  //change audio play to this slide
+  let prevAudio = from.querySelector("audio.ambientAudio");
+  let nextAudio = to.querySelector("audio.ambientAudio");
+  prevAudio.pause();
+  nextAudio.play();
+
   if (directionForwards) {
     from.classList.add("offLeft");
     to.classList.remove("offRight");
@@ -93,22 +99,15 @@ function pageChange(from, to, directionForwards) {
   }
 }
 
-// let f = d.querySelector("form");
-// f.addEventListener("change", function(e){
-// // e.preventDefault();
-
-// console.log(e);
-
-// });
-
 var audioNotStarted = true;
 d.addEventListener("click", (e) => {
   console.log(e);
 
   if (audioNotStarted) {
     //start audio on user interaction ie click
-
-    var birdSong = document.getElementById("birdsongAudio");
+    // initially its the first audio
+    // after that each audio may be controlled on slide change
+    var birdSong = document.getElementById("birdsongAudio01");
     if (birdSong.paused) {
       birdSong.play();
     }
